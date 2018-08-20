@@ -1,5 +1,6 @@
 package com.alexserden;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 public class CollectionOfIntegers<Integer> {
@@ -25,8 +26,9 @@ public class CollectionOfIntegers<Integer> {
 
 
     public void delete(int index) {
+        int a = getIndex(index);
         for (int i = 0; i < values.length; i++) {
-            values[i]-=getIndex(index);
+           if(values[i]!=index) values[i]-=a;
         }
         int[] temp = values;
         values = new int[values.length - 1];
@@ -41,13 +43,13 @@ public class CollectionOfIntegers<Integer> {
         return values[index];
     }
 
-    public boolean getValue(int value) {
+    public int getValue(int value) throws IOException {
 
         for (int i = 0; i < values.length; i++) {
             if (values[i] == value)
-                return true;
+                return i;
         }
-        return false;
+       throw new IOException();
     }
 
     public int getMaxElement () {
