@@ -13,7 +13,7 @@ public class Main {
        max();
         min();
         middle();
-       searchElement(0);
+       searchElement(1);
        getValue(-2);
 
 
@@ -29,31 +29,56 @@ public class Main {
     }
 
     public static void delete(int index) {
-        System.out.println("Удаление Елемента");
-        collection.delete(index);
-        Arrays.stream(collection.array()).forEach(x -> System.out.println(x));
+        try {
+            System.out.println("Удаление Елемента");
+            collection.delete(index);
+            Arrays.stream(collection.array()).forEach(x -> System.out.println(x));
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Несуществует елемента по данному индексу");
+        }
+
 
     }
 
     public static void max() {
-        System.out.println("Получение максимального числа " +"\n"+
-                collection.getMaxElement());
+        try {
+            System.out.println("Получение максимального числа " +"\n"+
+                    collection.getMaxElement());
+
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Массив не содержит елементов");
+        }
 
     }
 
     public static void min() {
+        try{
         System.out.println("Получение минимального числа" +"\n"+
                 collection.getMinElement());
+    }catch (ArrayIndexOutOfBoundsException e){
+        System.out.println("Массив не содержит елементов");
+
+    }
 
     }
 
     public static void middle() {
-        System.out.println("Получение среднего арефметического числа " +"\n"+
-                collection.getMiddleSumElement());
+        try {
+            System.out.println("Получение среднего арефметического числа " +"\n"+
+                    collection.getMiddleSumElement());
+        }catch (Exception e) {
+            System.out.println("Массив не содержит елементов");
+
+        }
+
     }
      public static void searchElement(int index){
-         System.out.println("Получение числа по индексу " +"\n"+
-                 collection.getIndex(index));
+         try {
+             System.out.println("Получение числа по индексу " + "\n" +
+                     collection.getIndex(index));
+         }catch (ArrayIndexOutOfBoundsException e){
+             System.out.println("Число по такому индексу не существует");
+         }
      }
      public static void getValue(int value){
                 try{
@@ -62,6 +87,8 @@ public class Main {
 
                 }catch(IOException e){
                     System.out.println("Данный массив не содержит эелемента с таким значением");
+                }catch (ArrayIndexOutOfBoundsException a){
+                    System.out.println("Элементы в массиве отсутствуют");
                 }
          }
 

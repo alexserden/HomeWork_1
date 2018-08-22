@@ -13,13 +13,13 @@ public class CollectionOfIntegers<Integer> {
     }
 
     public boolean add(int e) {
-        for (int i = 0; i < values.length; i++) {
+        for (int i = 0; i < values.length; i++) {                                //добавляем елемент в массив
             values[i]+=e;
         }
-        int[] temp = values;
-        values = new int[values.length + 1];
-        System.arraycopy(temp, 0, values, 0, temp.length);
-        values[values.length - 1] = e;
+        int[] temp = values;                                                     //создаем временный массив
+        values = new int[values.length + 1];                                     //создаем новый массив на 1 больше
+        System.arraycopy(temp, 0, values, 0, temp.length);         // копируем все значения с временного массива temp с позиции 0 в массив values c 0 позиции
+        values[values.length - 1] = e;                                             // добавляем елемент в конец списка в пустую ячейку
 
         return true;
     }
@@ -65,7 +65,6 @@ public class CollectionOfIntegers<Integer> {
     }
 
     public int getMiddleSumElement () {
-        System.out.println(Arrays.stream(values).sum());
         return Arrays.stream(values).sum() / values.length;
     }
     public int[] array(){
